@@ -19,7 +19,7 @@ const MovieList = props => {
 		getMovies();
 	}, []);
 
-	console.log('movies', movies);
+	// console.log('movies', movies);
 
 	return (
 		<div className='movie-list'>
