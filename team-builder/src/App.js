@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import Form from './components/Form';
+import Member from './components/Member';
 
 import './App.css';
 
 function App() {
-	const [member, setMember] = useState([
+	const [members, setMembers] = useState([
 		{
 			name: 'Larry',
 			email: 'larry@gmail.com',
@@ -17,9 +18,17 @@ function App() {
 		}
 	]);
 
+
 	return (
 		<div className='App'>
-			<Form member={member} setMember={setMember} />
+			{members.map((member, index) => (
+				<Member
+					member={member}
+					index={index}
+					key={index} 
+				/>
+			))}
+			<Form members={members} setMembers={setMembers}/>
 		</div>
 	);
 }

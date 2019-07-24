@@ -1,35 +1,60 @@
 import React from 'react';
+import useForm from './useForm';
 
-function Form({member}) {
+
+const Form = (props) => {
+  console.log('form', props)
+ 
+  const { values, handleChange, handleSubmit} = useForm(logForm);
+
+  function logForm() {
+    console.log(values)
+    props.setMembers([...props.members, values])
+  }
+
+  console.log('values', values)
+
 	return (
 		<div className='form'>
-			<form>
-				<label>
+			<form onSubmit={handleSubmit}>
+				<label>Name</label> 
+        <div>
           <input 
-            type='text' 
+            className='input'
+            type='name' 
             name='name' 
-            value={member.name} 
+           
             placeholder='name' 
+            onChange={handleChange}
           />
-				</label>
+        </div>
+				
 
-				<label>
+				<label>Email</label>
+        <div>
           <input 
-            type='text' 
+            className='input'
+            type='email' 
             name='email' 
-            value={member.email} 
+           
             placeholder='email' 
+            onChange={handleChange}
           />
-				</label>
+        </div>
+				
 
-				<label>
+				<label>Role</label>
+        <div>
           <input 
-            type='text' 
+            className='input'
+            type='role' 
             name='role' 
-            value={member.role} 
+           
             placeholder='role' 
+            onChange={handleChange}
           />
-				</label>
+        </div>
+        <button>Submit</button>
 			</form>
 		</div>
 	);
