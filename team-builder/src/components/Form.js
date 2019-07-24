@@ -3,17 +3,17 @@ import useForm from './useForm';
 
 
 const Form = (props) => {
-  console.log('form', props)
+  // console.log('form', props)
  
   const { values, handleChange, handleSubmit} = useForm(logForm);
 
   function logForm(member) {
-    console.log(values)
+    // console.log(values)
     member.id = props.members.length + 1
-    props.setMembers([...props.members, member])
+    props.setMembers([...props.members, values])
   }
 
-  console.log('values', values)
+  // console.log('values', values)
 
 	return (
 		<div className='form'>

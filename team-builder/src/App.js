@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Form from './components/Form';
 import Member from './components/Member';
+import EditMemberForm from './components/EditMemberForm';
 
 import './App.css';
 
@@ -20,6 +21,21 @@ function App() {
 		}
 	]);
 
+	const [editing, setEditing] = useState(false)
+	const initialMemberState = {id: null, name: '', email: '', role: '' }
+	const [currentMember, setCurrentMember] = useState(initialMemberState)
+	
+
+	const editMember = member => {
+		setEditing(true)
+		setCurrentMember({id: member.id, name: member.name, email: member.email, role: member.role })
+	}
+
+	const updateMember = (id, updatedMember) => {
+		setEditing(false)
+		setMembers(members.map(member => (member.id === id ? updatedMember : member)))
+	}
+
 	const deleteMember = id => {
 		setMembers(members.filter(member => member.id !== id))
 	}
@@ -35,11 +51,26 @@ function App() {
 					index={index}
 					key={member.id}
 					deleteMember={deleteMember} 
+					editMember={editMember}
 				/>
 			))}
-			<Form members={members} setMembers={setMembers}/>
+			{editing ? (
+				<div>
+					<h2>Edit Member</h2>
+					<EditMemberForm
+						editing={editing}
+						setEditing={setEditing}
+						currentMember={currentMember}
+						updateMember={updateMember} 
+					/>
+				</div>
+			) : (
+				<div>
+					<h2>Add user</h2>
+					<Form members={members} setMembers={setMembers}/>
+				</div>
+			)}
 		</div>
-	);
-}
+	)}
 
 export default App;
