@@ -19,7 +19,7 @@ function Member(props) {
 						<td>{props.member.role}</td>
 						<td>
 							<button className="button muted-button">Edit</button>
-							<button className="button muted-button">Delete</button>
+							<button onClick={() => props.deleteMember(props.member.id)} className="button muted-button">Delete</button>
 						</td>
 					</tr>
 				</tbody>

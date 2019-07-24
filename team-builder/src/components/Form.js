@@ -7,9 +7,10 @@ const Form = (props) => {
  
   const { values, handleChange, handleSubmit} = useForm(logForm);
 
-  function logForm() {
+  function logForm(member) {
     console.log(values)
-    props.setMembers([...props.members, values])
+    member.id = props.members.length + 1
+    props.setMembers([...props.members, member])
   }
 
   console.log('values', values)
