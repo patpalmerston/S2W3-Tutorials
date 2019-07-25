@@ -70,6 +70,19 @@ function App() {
 					<Form members={members} setMembers={setMembers}/>
 				</div>
 			)}
+			{/* <div>
+					<h2>Edit Member</h2>
+					<EditMemberForm
+						editing={editing}
+						setEditing={setEditing}
+						currentMember={currentMember}
+						updateMember={updateMember} 
+					/>
+				</div>
+				<div>
+					<h2>Add user</h2>
+					<Form members={members} setMembers={setMembers}/>
+				</div> */}
 		</div>
 	)}
 

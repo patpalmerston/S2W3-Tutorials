@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 const EditMemberForm = props => {
-  console.log('edit member form ', props)
+  
   const [member, setMember] = useState(props.currentMember)
+  console.log('edit member form ', member)
+
+  useEffect(() => {
+    setMember(props.currentMember)
+  }, [props])
 
   const handleInputChange = event => {
     const { name, value } = event.target
