@@ -54,7 +54,7 @@ function App() {
 					editMember={editMember}
 				/>
 			))}
-			{editing ? (
+			{/* {editing ? (
 				<div>
 					<h2>Edit Member</h2>
 					<EditMemberForm
@@ -69,8 +69,8 @@ function App() {
 					<h2>Add user</h2>
 					<Form members={members} setMembers={setMembers}/>
 				</div>
-			)}
-			{/* <div>
+			)} */}
+			<div>
 					<h2>Edit Member</h2>
 					<EditMemberForm
 						editing={editing}
@@ -82,7 +82,7 @@ function App() {
 				<div>
 					<h2>Add user</h2>
 					<Form members={members} setMembers={setMembers}/>
-				</div> */}
+				</div>
 		</div>
 	)}
 
