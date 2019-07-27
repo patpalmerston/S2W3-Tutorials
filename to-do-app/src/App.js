@@ -21,11 +21,33 @@ function App() {
     setTodos(newTodos)
   }
 
+  // lets update existing items
+  const completeTodo = index => {
+    const newTodos = todos.map((todo) => {
+      if(todo.id === index) {
+        return {...todo, isCompleted : true}
+      }
+      return todo
+    })
+  
+    setTodos(newTodos);
+  }
+  
+
   // lets hard code an array of objects to display for our initial state
    const [todos, setTodos] = useState([
-     {text: 'Do something fun'},
-     {text: 'grow a pony tail'},
-     {text: 'go somewhere fancy'}
+     {text: 'Do something fun',
+      isCompleted: false,
+      id: 1
+      },
+     {text: 'grow a pony tail',
+      isCompleted: false,
+      id: 2
+      },
+     {text: 'go somewhere fancy',
+      isCompleted: false,
+      id: 3
+      }
    ]);
 
 console.log('todos', todos)
@@ -37,6 +59,9 @@ console.log('todos', todos)
             key={index}
             index={index}
             todo={todo.text}
+            id={todo.id}
+            completeTodo={completeTodo}
+            isCompleted={todo.isCompleted}
           />
         ))}
       <TodoForm
